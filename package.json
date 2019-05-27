@@ -1,0 +1,25 @@
+{
+  "name": "unbalanced-kd-tree",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest ./test"
+  },
+  "author": "rymdkraftverk",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-preset-minify": "^0.5.0",
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
+}
