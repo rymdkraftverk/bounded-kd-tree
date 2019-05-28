@@ -1,11 +1,12 @@
 import R from 'ramda'
 import { calculateMiddle, isNode } from './common'
-import DIMENSIONS from './dimensions'
 
-const getNextDimension = (dim) => {
-  const currentIndex = DIMENSIONS.indexOf(dim)
-  const nextIndex = (currentIndex + 1) % DIMENSIONS.length
-  return DIMENSIONS[nextIndex]
+const getNextDimension = (dim, borders) => {
+  const dimensions = Object.keys(borders)
+
+  const currentIndex = dimensions.indexOf(dim)
+  const nextIndex = (currentIndex + 1) % dimensions.length
+  return dimensions[nextIndex]
 }
 
 const createChildBorders = (borders, dimension, greaterThanMiddle) => {
@@ -29,7 +30,7 @@ const createChildBorders = (borders, dimension, greaterThanMiddle) => {
 }
 
 const createEmptySubTree = (greaterThanMiddle, { dimension, borders }) => {
-  const nextDimension = getNextDimension(dimension)
+  const nextDimension = getNextDimension(dimension, borders)
   const childBorders = createChildBorders(borders, dimension, greaterThanMiddle)
 
   return initEmptyTree(childBorders, nextDimension)
@@ -76,7 +77,7 @@ const addEntityToTree = (options, tree, entity) => {
 }
 
 export const initEmptyTree = (borders, dimension) => ({
-  dimension: dimension || DIMENSIONS[0],
+  dimension: dimension || Object.keys(borders)[0],
   borders:   borders
 })
 

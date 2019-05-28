@@ -18,9 +18,8 @@ space over time.
 
 ### Create an empty tree
 
-The tree is currently limited to two dimensions, `x` and `y`. This will be
-expanded on in a future version. The bounds of the dimensions must be supplied
-when creating a new tree.
+The tree must be initialized with the boundaries that the entities fall within.
+Each dimension must have a `min` and `max` value.
 
 ```js
 const emptyTree = KDT.initEmptyTree({
