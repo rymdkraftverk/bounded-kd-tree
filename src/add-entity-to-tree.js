@@ -76,9 +76,9 @@ const addEntityToTree = (options, tree, entity) => {
   }
 }
 
-export const initEmptyTree = (borders, dimension) => ({
-  dimension: dimension || Object.keys(borders)[0],
-  borders:   borders
+export const initEmptyTree = (borders, dimension = Object.keys(borders)[0]) => ({
+  dimension,
+  borders,
 })
 
 const addEntityToTreeExport = R.curry(({ getCoord }, tree, entity) => {

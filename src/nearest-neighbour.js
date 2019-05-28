@@ -65,4 +65,6 @@ const nearestNeighbourExport = R.curry(({ getCoord, earlyReturn, filter }, tree,
   return nearestNeighbour(options, tree, entity)
 })
 
+// eslint-disable-next-line import/prefer-default-export
 export { nearestNeighbourExport as nearestNeighbour }
+
