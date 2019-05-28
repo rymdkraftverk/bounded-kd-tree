@@ -1,10 +1,6 @@
 import R from 'ramda'
-//import { GAME_WIDTH, GAME_HEIGHT } from '../constant/rendering'
 import { calculateMiddle, isNode } from './common'
 import DIMENSIONS from './dimensions'
-
-const GAME_WIDTH = 100
-const GAME_HEIGHT = 100
 
 const getNextDimension = (dim) => {
   const currentIndex = DIMENSIONS.indexOf(dim)
@@ -81,16 +77,7 @@ const addEntityToTree = (options, tree, entity) => {
 
 export const initEmptyTree = (borders, dimension) => ({
   dimension: dimension || DIMENSIONS[0],
-  borders:   borders || {
-    x: {
-      min: 0,
-      max: GAME_WIDTH,
-    },
-    y: {
-      min: 0,
-      max: GAME_HEIGHT,
-    },
-  },
+  borders:   borders
 })
 
 const addEntityToTreeExport = R.curry(({ getCoord }, tree, entity) => {
