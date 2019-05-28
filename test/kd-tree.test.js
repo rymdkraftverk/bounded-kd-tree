@@ -1,5 +1,5 @@
 import R from 'ramda'
-import { addEntityToTree, initEmptyTree, nearestNeighbour } from '../src'
+import { addEntityToTree, filter, initEmptyTree, nearestNeighbour } from '../src'
 
 const constructTree = (options, entities) => {
   const emptyTree = initEmptyTree({
@@ -37,6 +37,35 @@ const parseOptions = ({ earlyReturn, filter }) => {
 }
 
 const parseEntity = ([x, y, filter]) => ({ filter, asset: { x, y } })
+
+describe.each`
+  options | entities                                            | entity    | expectedRemainingTree
+  ${{}}   | ${[[7, 7, true]]}                                   | ${[7, 7]} | ${[]}
+  ${{}}   | ${[[7, 7, true], [0, 7, true]]}                     | ${[7, 7]} | ${[[0, 7, true]]}
+  ${{}}   | ${[[0, 7, true], [7, 4, true], [7, 6, true]]}       | ${[7, 6]} | ${[[0, 7, true], [7, 4, true]]}
+`('remove entity from tree', ({
+  options,
+  entities,
+  entity,
+  expectedRemainingTree,
+}) => {
+  const parsedOptions = parseOptions(options)
+  const parsedEntities = entities.map(parseEntity)
+  const parsedEntity = parseEntity(entity)
+  const expected = constructTree(parsedOptions, expectedRemainingTree.map(parseEntity))
+
+  const description = `The tree should only contain ${JSON.stringify(expectedRemainingTree)} after removing ${JSON.stringify(entity)}`
+
+  test(description, () => {
+    const tree = constructTree(parsedOptions, parsedEntities)
+
+    const filterPredicate = e => e.asset.x != parsedEntity.asset.x || e.asset.y != parsedEntity.asset.y
+    const updatedTree = filter({}, filterPredicate, tree)
+
+    expect(updatedTree)
+      .toEqual(expected)
+  })
+})
 
 // see explanations of tests 3 and 4 in the comments at the bottom of the file
 describe.each`

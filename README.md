@@ -94,3 +94,14 @@ This can be useful there are different kinds of entities in the same tree and
 only one type is relevant. The default variant will not filter out anything (it
 always returns `true`).
 
+### Remove an entity from a tree
+
+To remove all entities that have the `id` `123`, create a function that filters
+out such entities.
+
+```js
+const options = {}
+const filterPredicate = entity => entity.id !== 123
+const updatedTree = KDT.filter(options, filterPredicate, myTree)
+```
+
