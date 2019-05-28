@@ -18,9 +18,9 @@ space over time.
 
 ### Create an empty tree
 
-A tree is initiated with arbitrary (>0) number of dimensions where each
-dimension has a specified `min` and `max` boundary.
-TODO, not true. It's currently hardcoded to the dimensions `x` and `y`
+The tree is currently limited to two dimensions, `x` and `y`. This will be
+expanded on in a future version. The bounds of the dimensions must be supplied
+when creating a new tree.
 
 ```js
 const emptyTree = KDT.initEmptyTree({
