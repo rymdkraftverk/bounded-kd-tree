@@ -1,5 +1,5 @@
 {
-  "name": "unbalanced-kd-tree",
+  "name": "bounded-kd-tree",
   "version": "0.0.1",
   "description": "",
   "main": "dist",
@@ -11,8 +11,20 @@
     "lint": "eslint src",
     "test": "jest ./test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rymdkraftverk/bounded-kd-tree"
+  },
+  "keywords": [
+    "kd",
+    "tree"
+  ],
   "author": "rymdkraftverk",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rymdkraftverk/bounded-kd-tree/issues"
+  },
+  "homepage": "https://github.com/rymdkraftverk/bounded-kd-tree",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
